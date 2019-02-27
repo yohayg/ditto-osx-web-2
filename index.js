@@ -13,13 +13,20 @@ app.get('/api/passwords', (req, res) => {
 
   // Generate some passwords
   const passwords = Array.from(Array(count).keys()).map(i =>
-    generatePassword(12, false)
-  )
+      generatePassword(12, false)
+  );
 
   // Return them as json
   res.json(passwords);
 
   console.log(`Sent ${count} passwords`);
+});
+
+app.get('/api/version', (req, res) => {
+  var ditto_version = require("./ditto_version.json");
+  res.json(ditto_version);
+
+  console.log(`version`);
 });
 
 // The "catchall" handler: for any request that doesn't
